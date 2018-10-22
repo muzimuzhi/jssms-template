@@ -1,3 +1,4 @@
+% !TeX encoding = GBK
 %%
 %% This is file `jssms.cls',
 %% generated with the docstrip utility.
