@@ -4,6 +4,10 @@
 %此模板需调用宏包jssms.cls, 请确保此宏包与tex文件在同一文件夹下.
 %请使用CCT&LaTex编译.
 
+%%
+%% 使能通过 pdflatex 编译
+%%
+\AtBeginDvi{\input{zhwinfonts}}
 
 \numberwithin{equation}{section}
 % 公式编号会随着Section而变动,如(1.1),(1.2),(2.1)...,如果不便使用,您可以将这个命令删去
