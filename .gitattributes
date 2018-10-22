@@ -1,0 +1,4 @@
+* text=auto
+
+*.cls diff=gbk eol=crlf
+*.tex diff=gbk eol=crlf
