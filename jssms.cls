@@ -47,8 +47,8 @@
 \PassOptionsToClass{twoside}{cctart}
 \ProcessOptions
 \LoadClass{cctart}
-\RequirePackage{graphicx, graphics,subfigure,picins,indentfirst,lastpage,epsfig,
-                epstopdf, booktabs,multirow}% by Song 20151024
+\RequirePackage{graphicx,float,indentfirst,lastpage,epsfig,
+                epstopdf,booktabs,multirow}
 \RequirePackage{amsmath,amsthm,amssymb,amsfonts,amscd,mathrsfs,bm,enumerate}
 \RequirePackage[numbers,square,comma,sort&compress]{natbib}
 \RequirePackage{ifpdf,fancyhdr}
@@ -64,86 +64,56 @@
 
 \parindent=2\ccwd
 \linespread{1.3}
-%\renewcommand\baselinestretch{1.1}
+\ziju{0.135}
 \allowdisplaybreaks[4]
 \newfam\cryfam
 \newfam\smbfam
 \newfont{\htxt}{eufm10 scaled \magstep0}
-\font\tenthxt=eufm10 scaled \magstep0 \font\tenBbb=msbm10 scaled
-\magstep0 \font\tencyr=wncyr10 scaled \magstep0 \font\tenrm=cmr10
-scaled \magstep0 \font\tenbf=cmb10 scaled \magstep0
-\font\tenBb=msbm7 \font\tenB=msbm10 scaled \magstep3
+\font\tenthxt=eufm10 scaled \magstep0
+\font\tenBbb=msbm10 scaled \magstep0
+\font\tencyr=wncyr10 scaled \magstep0
+\font\tenrm=cmr10 scaled \magstep0
+\font\tenbf=cmb10 scaled \magstep0
+\font\tenBb=msbm7
+\font\tenB=msbm10 scaled \magstep3
+
 \def\cyr{\tencyr}
 \def\Bbb{\tenBbb}
 \def\Bb{\tenBb}
 \def\B{\tenB}
 \def\txt{\tenthxt}
 
-
-
 \def\ST{\songti\rm\relax}
 \def\HT{\heiti\bf\relax}
 \def\FS{\fangsong\relax}
 \def\KS{\kaishu\relax}
 
-\def\RM{\rm}
-\def\It{\it}
 \def\hat{\widehat}
 \def\tilde{\widetilde}
 \def\bar{\overline}
 \def\epsilon{\varepsilon}
 \def\dd{{\rm d}}
 \def\ii{{\rm i}}
-\def\q{\quad}
-\def\dint{\displaystyle\int} 
-\def\vsp{\vspace{1mm}}
-\def\no{\nonumber}
-\def\q{\quad} \def\qq{\qquad}
 \def\ee{{\rm e}}
 \newcommand{\rulex}{\hfill\rule{1mm}{3mm}}
-\def\ay{\arraycolsep=1.5pt}
-\def\d{\displaystyle}
-\def\dfrac{\displaystyle\frac}
 \def\la {\langle}              \def\ra {\rangle}
-\def\n{\noindent}
 \def\*{$\!\!^{^{^{\displaystyle *}}}$}
-%\def\jssmszi{\zihao{10}\ziju{0.135}}
-\ziju{0.135}
 
 
-\def\jssms@beginENV{%
-  \openin\@firstpage=firstpage.dat
-  \ifeof\@firstpage
-    %long 09-10-10 \setcounter{page}{1}
-  \else
-    \global\read\@firstpage to\@fpage
-    \setcounter{page}{\@fpage}
-  \fi
-  \closein\@firstpage
-}
-\def\jssms@endENV{%
-  \ifjssms@evenend%
-    \ifodd\arabic{page}\hrule height0pt depth0pt\newpage
-    \thispagestyle{empty}\ \fi
-  \fi
-  \@checkend{document}\clearpage
-  \begingroup
-  \addtocounter{page}{-1}
-  \immediate\openout\@@lastpage=lastpage.dat
-  \immediate\write\@@lastpage{\arabic{page}}
-  \immediate\closeout\@@lastpage
-  \endgroup
-}
 
 \def\b{\bigg}\def\bi{\Big}
+
+% redefine footnote mark, remove \@textsuperscript
+\def\@makefnmark{\hbox{\normalfont\@thefnmark}}
+
 \newcommand*\EditorNote[1]{%
   \begingroup
-    \long\def\@makefntext##1{\zihao{6}\parindent 1em\indent\indent\hbox to 0pt{\hss$^{}$}##1}%
+    \long\def\@makefntext##1{\zihao{6}\parindent=2em\indent##1}%
     \footnotetext{#1}%
   \endgroup}
 \newcommand*\FootNote[1]{%
   \begingroup
-    \long\def\@makefntext##1{\zihao{6}\parindent 1em\indent\indent\hbox to 0pt{\hss$^{}$}##1}%
+    \long\def\@makefntext##1{\zihao{6}\parindent=2em\indent\@makefnmark. ##1}%
     \footnote{#1}%
   \endgroup}
 \newcommand\PageNum[1]{\setcounter{page}{#1}}
@@ -169,7 +139,9 @@ scaled \magstep0 \font\tenbf=cmb10 scaled \magstep0
   \let\subsectionmark\@gobble
 }% by Song 20131122将页眉改为左右两个格式，奇偶页码时对应替换
 \ps@headings
+
 \newcommand*\TitleMark[1]{\def\jssms@titlemark{#1}}
+
 \def\jssms@year{2011}
 \def\jssms@month{1}
 \def\jssms@volume{54}
@@ -179,29 +151,28 @@ scaled \magstep0 \font\tenbf=cmb10 scaled \magstep0
   \def\jssms@month{#2}%
   \def\jssms@volume{#3}%
   \def\jssms@number{#4}}
+  
 \def\jssms@paperid{}
-\newcommand*\PaperID[1]{%
-  \def\jssms@paperid{#1}}
+\newcommand*\PaperID[1]{\def\jssms@paperid{#1}}
+
 \def\jssms@documentcode{}
-\newcommand*\DocumentCode[1]{%
-  \def\jssms@documentcode{#1}}
+\newcommand*\DocumentCode[1]{\def\jssms@documentcode{#1}}
+
 \newcommand*\jssms@shortmonthname[1]{%
-\ifcase#1\or Jan.\or Feb.\or Mar.\or Apr.\or May\or Jun.%
-\or Jul.\or Aug.\or Sep.\or Oct.\or Nov.\or Dec.\fi}
+  \ifcase#1\or Jan.\or Feb.\or Mar.\or Apr.\or May\or Jun.%
+  \or Jul.\or Aug.\or Sep.\or Oct.\or Nov.\or Dec.\fi}
 \newcommand*\Title[1]{%
- %\vspace*{0.3cm}%by Song 2017-01-17
   \begin{center}
     {\zihao{2}\heiti\huge\bf #1}\\[.2in]
   \end{center}
 }
 \newcommand*\ETitle[1]{%
-  \vskip 0.6 cm %by Song 2017-01-17
+  \vskip 0.6 cm
   \begin{center}
     {\large\bf #1}\\[2mm]
   \end{center}
 }
 \newcommand*\Author[2]{%
- %\vspace*{0.3cm}%by Song 2017-01-17
   \begin{center}
     \zihao{4}\fangsong#1\\[0.2cm]
     \songti\zihao{6}#2\\[.1in]
@@ -221,20 +192,17 @@ scaled \magstep0 \font\tenbf=cmb10 scaled \magstep0
   \end{center}
 }
 
-%\newcommand*\BeginTitle{%
-%\hspace{-0.5cm}\parbox[b]{4.5truecm}{\footnotesize\baselineskip=11pt\noindent%
-%{\zihao{5}\heiti  {系} \hspace*{1.5mm}  {统} \hspace*{1.5mm} {科} \hspace*{1.5mm}  {学}\hspace*{1.5mm}{与} \hspace*{1.5mm}  {数}\hspace*{1.5mm} {学}}\\
-%{\small\it J.\,\, Sys.\,\, Sci.\,\,} \& {\small\it \,\,\, Math.\,\, Scis.}\\[-1mm]
-%{\bf\small \jssms@volume}(\small\jssms@number)\quad\,\,(\small\jssms@year, \small\jssms@month),\,\,\,\quad \thepage--\pageref{LastPage}\\} \hfill\parbox[t]{4.5truecm}{}}
+\renewenvironment{titlepage}{%
+  \par\raggedleft
+  \parbox[t]{4.5cm}{\baselineskip=11pt
+    \zihao{5}\makebox[4.5cm][s]{\heiti系统科学与数学}\\
+    \small\makebox[4.5cm][s]{\itshape\frenchspacing J. Sys. Sci. \textnormal{\&} Math. Scis.}\\[-1mm]
+    \textbf{\jssms@volume}(\jssms@number)\quad\,\,(\jssms@year, \jssms@month),\,\,\,\quad \thepage--\pageref{LastPage}}%
+  \par\raggedright
+}{%
+  \vskip .1in%
+}
 
-\newcommand*\BeginTitle{%
-\parbox[b]{6truecm}{} \hfill
-\parbox[t]{4.5truecm}{\footnotesize\baselineskip=11pt\noindent%
-{\zihao{5}\heiti  {系} \hspace*{1.5mm}  {统} \hspace*{1.5mm} {科} \hspace*{1.5mm}  {学} \hspace*{1.5mm} {与} \hspace*{1.5mm}  {数}\hspace*{1.5mm} {学}}\\
-{\small\it J.\,\, Sys.\,\, Sci.\,\,} \& {\small\it \,\,\, Math.\,\, Scis.}\\[-1mm]
-{\bf\small \jssms@volume}(\small\jssms@number)\quad\,\,(\small\jssms@year, \small\jssms@month),\,\,\,\quad \thepage--\pageref{LastPage}\\}}
-
-\newcommand*\EndTitle{\vskip .1in}
 \newcommand*\Abstract[1]{%
   \begingroup\vskip.1in\narrower\noindent
     {\heiti \small 摘要}\small\quad  #1 \baselineskip 12.3pt
@@ -243,6 +211,7 @@ scaled \magstep0 \font\tenbf=cmb10 scaled \magstep0
   \begingroup\vskip.1in\narrower\noindent 
   {\bf Abstract}\quad  #1 \baselineskip 12.3pt
   \par\vskip.1in\endgroup}
+
 \newcommand*\Keywords[2][关键词]{%
   \begingroup\narrower\noindent
     {\heiti \small #1}\small\quad  #2%
@@ -251,37 +220,40 @@ scaled \magstep0 \font\tenbf=cmb10 scaled \magstep0
   \begingroup\narrower\noindent
     {\bf #1}\quad #2%
   \par\endgroup}
+
 \newcommand*\MRClass[2][MR(2000)主题分类号]{%
   \begingroup\narrower\noindent
     {\heiti\zihao{-5}\small  \bf #1}\zihao{6}\ \ #2%
   \par\endgroup}
-  
-\newcommand*\Section[2][]{%
-  \edef\jssms@temp{#1}
-  \ifx\jssms@temp\@empty\addtocounter{section}{1}
-  \else\setcounter{section}{#1}\fi
-  \vskip 0.5cm
-  \leftline{\large\zihao{-4}\heiti\bf\thesection\ \ #2} 
-  \vskip 0.3cm
-  \normalsize
-  \abovedisplayskip=4.0pt plus 2.0pt minus 2.0pt
-  \belowdisplayskip=4.0pt plus 2.0pt minus 2.0pt
-  \baselineskip 15.3pt
-}
-\def\Subsection#1{\vskip 0.2cm\noindent {\zihao{5}\heiti\bf #1}
-     \vskip 0.1cm}
-\def\Subsubsection#1{\vskip 0.1cm\noindent {\zihao{5}\heiti\bf #1}
-     \vskip 0.05cm}
+
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+                                    {0.5cm}
+                                    {0.5cm}
+                                    {\normalfont\zihao{-4}\bfseries}}
+\renewcommand\sectionname{\thesection}
+\def\@seccntformat#1{\csname the#1\endcsname\space\space}
+
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                    {0.2cm}
+                                    {0.1cm}
+                                    {\normalfont\zihao{5}\bfseries}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                                    {0.1cm}
+                                    {0.05cm}
+                                    {\normalfont\zihao{5}\bfseries}}
+
 \renewcommand\refname{\zihao{5}\heiti 参 \quad 考 \quad 文 \quad献 \vspace*{4mm}} % by Song 20121107
-\makeatletter
-        \renewcommand\@biblabel[1]{{[#1]\hfill}}
-     \makeatother
-\newcommand\BeginRef{\vspace*{4mm}\small \zihao{6}\baselineskip 11pt
-\parindent=0pt \hangindent=0.6cm \hangafter=1
- %  by Song 20121107
-\begin{thebibliography}{199}\addtolength{\itemsep}{-1.5ex}
+
+\renewcommand\@biblabel[1]{{[#1]\hfill}}
+
+\newenvironment{reference}{%
+  \vspace*{4mm}\small \zihao{6}\baselineskip 11pt
+  \parindent=0pt \hangindent=0.6cm \hangafter=1
+  \begin{thebibliography}{199}\addtolength{\itemsep}{-1.5ex}%
+}{%
+  \end{thebibliography}
 }
-\newcommand\EndRef{\end{thebibliography}}
+
 \newcommand*\REF[1]{\bibitem{#1}}
 \newcommand*\supercite[1]{\textsuperscript{\cite{#1}}}
 
@@ -289,6 +261,28 @@ scaled \magstep0 \font\tenbf=cmb10 scaled \magstep0
 %% config path of figures
 %%
 \graphicspath{{./figures/}}
+
+%%
+%% float caption style
+%%
+
+% remove font chenging declarations added by cctart.cls
+\renewcommand\figurename{图}
+\renewcommand\tablename{表}
+
+% substitute \normalsize with \small
+\long\def\@caption#1[#2]#3{%
+  \par
+  \addcontentsline{\csname ext@#1\endcsname}{#1}%
+    {\protect\numberline{\csname the#1\endcsname}{\ignorespaces #2}}%
+  \begingroup
+    \@parboxrestore
+    \if@minipage
+      \@setminipage
+    \fi
+    \small
+    \@makecaption{\csname fnum@#1\endcsname}{\ignorespaces #3}\par
+  \endgroup}
 \endinput
 %%
 %% End of file `jssmsc.cls'.

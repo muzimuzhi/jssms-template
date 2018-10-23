@@ -12,10 +12,8 @@
 \numberwithin{equation}{section}
 % 公式编号会随着Section而变动,如(1.1),(1.2),(2.1)...,如果不便使用,您可以将这个命令删去
 %--------------文内自定义命令----------------
+\usepackage[pass, showframe]{geometry}
 
-
-\def\RM{\rm}
-\def\It{\it}
 \def\hat{\widehat}
 \def\tilde{\widetilde}
 \def\bar{\overline}
@@ -23,25 +21,16 @@
 \def\dd{{\rm d}}
 \def\ii{{\rm i}}
 \def\ee{{\rm e}}
-\def\q{\quad}
 \def\dint{\displaystyle\int}
 \def\vsp{\vspace{1mm}}
-\def\no{\nonumber}
 \def\q{\quad} \def\qq{\qquad}
-\def\ay{\arraycolsep=1.5pt}
-\def\d{\displaystyle}
-\def\dfrac{\displaystyle\frac}
 \def\la {\langle}              \def\ra {\rangle}
-\def\n{\noindent}
 \def\*{$\!\!^{^{^{\displaystyle *}}}$}
 %**************************************************
 \def\jssmszi{\zihao{10}\ziju{0.135}}
 \parindent=2\ccwd
 \def\rmn#1{\romannumeral #1}
 \def\Rmn#1{\expandafter\uppercase\expandafter{\romannumeral #1}}
-\def\cases#1{\left\{\,\vcenter{\normalbaselines \openup\jot
-    \ialign{$\displaystyle{##}$\hfil&\quad{##}\hfil\crcr#1\crcr}}
-    \right.}
 %---------------------------------------
 %--------------文内自定义命令结束------------
 
@@ -60,7 +49,6 @@
 
 \thispagestyle{empty}
 
-
 \Volume{20xx}{x}{x}{x}               % 年、月、卷、期
 \PageNum{1}                                  % 起始页码
 \PaperID{0583-1431(20xx)0x-0xxx-0x}   % 文章编号
@@ -77,7 +65,7 @@
 \TitleMark{作者姓名: 论文标题缩写}
 % 页眉, 如有多位作者,请写为： 第一作者姓名等: 论文标题缩写
 
- \BeginTitle
+\begin{titlepage}
 
 \Title{论文标题\*}
 
@@ -94,100 +82,92 @@
 
 \ETitle{TITLE} %英文标题名称全大写
 
-\EAuthor{\uppercase{XING} Ming1$^{1}$\q\q \uppercase{XING} Ming2$^{2}$\q \q \uppercase{XING} Ming$^{3}$} % 作者姓名的拼音,姓在前,名在后,
-{\small(1. {\it Author's Address,\, City} Postcode; 2. {\it Author's
-Address,\, City} Postcode; 3. {\it Author's Address,\, City}
-Postcode;)}
-% 如 \small({\it Academy of Mathematics and Systems Science, Chinese Academy of Sciences, Beijing} 100190) \\
+\EAuthor{% 作者姓名的拼音,姓在前,名在后,
+  \uppercase{XING} Ming1$^{1}$\qquad
+  \uppercase{XING} Ming2$^{2}$\qquad
+  \uppercase{XING} Ming$^{3}$%
+}{%
+  \small
+  (1. \textit{Author's Address,\, City} Postcode; 
+   2. \textit{Author's Address,\, City} Postcode; 
+   3. \textit{Author's Address,\, City} Postcode;)%
+}
+% 如 (\textir{Academy of Mathematics and Systems Science, Chinese Academy of Sciences, Beijing} 100190)
 
-
+%顺序相邻的几个作者若单位相同，合并在一起排版。
 %\EAuthor{\uppercase{XING} Ming\q \q \uppercase{XING} Ming}
 %{\small(Author's Address)}
 
-%顺序相邻的几个作者若单位相同，合并在一起排版。
-
 \EAbstract{In this paper, we $\cdots$}
-注意:英文摘要需将文中研究结果和结论尽量详细阐述,使不懂中文的学者能了解
-到文章的研究成果.
+注意:英文摘要需将文中研究结果和结论尽量详细阐述,使不懂中文的学者也能了解到文章的研究成果.
 
-\EKeywords{Keyword1, Keyword2, Keyword3, $\cdots$.}%Jia, yi, bing, ding.
+\EKeywords{Keyword1, Keyword2, Keyword3, $\cdots$.}
 
-
-\EndTitle
+\end{titlepage}
 
 
 
-\Section{引\ \ 言}
+\section{引\ \ 言}
 
-Bustos和Concha\supercite{ref1}讨论了$\cdots$,
-其它结论见文\cite{ref2,ref3,ref4},
-
+Bustos和Concha\supercite{ref1}讨论了$\cdots$,其它结论见文 \cite{ref2,ref3,ref4}.
 
 公式示例\supercite{ref2,ref3,ref5,ref6,ref7}
 \begin{align}\label{eq:1.1}
-a&=b \nonumber\\
-&=c\nonumber\\
-&=d.
+  a &= b \notag\\
+    &= c \notag\\
+    &= d.
 \end{align}
-其中由式\eqref{eq:1.1}, % 也可以使用(\ref{eq:1.1})来引用公式编号
-我们可以得到\FootNote{1.脚注的命令格式.}
+其中由式\eqref{eq:1.1}, 我们可以得到\FootNote{脚注的命令格式.}
+% 也可以使用(\ref{eq:1.1})来引用公式编号
 \begin{align*}
-a=b.
+  a = b.
 \end{align*}
 
 {\HT 定义 1.1}\ \   内容
 
 {\HT 引理 1.2}\ \   内容
 
-\indent {\FS 证}\ \   内容
+{\FS 证}\ \   内容
 
 {\KS 注 1.3}\ \   内容
 
-注意文中的标点符号应使用英文半角状态下的格式,例如: , . : ; ? ( )
-``''等; 使用的大写希腊字母统一要用斜体标示,例如: ${\it \Phi},{\it
-\Lambda},
- {\it \Theta},{\it\Omega},\cdots$; 文章中请使用1), 2), 3),
- $\cdots$或 (i), (ii), (iii), $\cdots$ 或 (h), (i), (g), $\cdots$表示
- 分类符号; 公式中的微分符号$d$要正体,例: $\int f(x)\dd x$,
-  $\dd y(t)=t^2+1$; 常数$e$字体为正体,例: ${\rm e}$或$\ee$,除此之外,
-公式序列要先列举两项,再使用省略号 $\cdots$,
- 例: $\{f(x_i),\ i=1,2,\cdots,n\}$, $y_1<y_2<\cdots<y_n$,
-$A=A_1+A_2+\cdots+A_m$,  $\cdots$.
+注意文中的标点符号应使用英文半角状态下的格式,例如: , . : ; ? ( ) ``''等; 使用的大写希腊字母统一要用斜体标示,例如: $\varPhi,\varLambda,\varTheta,\varOmega,\cdots$; 文章中请使用1), 2), 3),
+$\cdots$或 (i), (ii), (iii), $\cdots$ 或 (h), (i), (g), $\cdots$表示分类符号; 公式中的微分符号$d$要正体,例: $\int f(x)\dd x$,$\dd y(t)=t^2+1$; 常数$e$字体为正体,例: $\mathrm{e}$或$\ee$,除此之外,公式序列要先列举两项,再使用省略号 $\cdots$, 例: $\{f(x_i)$, $i=1,2,\cdots,n\}$, $y_1<y_2<\cdots<y_n$,$A=A_1+A_2+\cdots+A_m$,  $\cdots$.
 
-\Section{主要定理及其证明}
-\setcounter{section}{2}\setcounter{equation}{0}
+\section{主要定理及证明}
 
 {\HT 定理 2.1}\ \   内容
 
-\indent {\FS 证}\ \   内容
+{\FS 证}\ \   内容
 
-\Subsection{2.1\ \ 表格示例}
-\begin{center}
-    \centering{\small 表1\ \ 标题}\\
-    \centerline{\small (Table 1\ \ Title)}%%表中文标题下附英文标题翻译。
-\vskip 1mm {\small
-    \begin{tabular*}{8.5cm}{ccccccc}
-        \hline
-        &\multirow{2}{*}{$\rho$}   &\multicolumn{2}{c}{AR(1)} &   \multicolumn{2}{c}{MA(1)} &    \\
-        \cmidrule(r){3-4}\cmidrule(r){5-6}
-                        &    & $\theta_{0}$ & $\beta_{0}$ & $\theta_{0}$ & $\beta_{0}$   \\
-        \hline
-            &0.6   &0.0037    &2.1503    &0.0071    &2.1247   \\
-            &0.1   &0.0034    &1.8573    &0.0034    &1.7147   \\
-            & 0.0   &0.0031    &1.8490    &0.0030    &1.6400   \\
-            & 0.1   &0.0033    &2.0329    &0.0035    &2.1271   \\
-      \hline
-    \end{tabular*}}
-\end{center}
+\subsection{表格示例}
+
+\begin{table}[H]
+  \small\centering  
+  \caption{标题}
+  \centerline{(Table 1\ \ Title)}%%表中文标题下附英文标题翻译。
+  \vskip 1mm 
+  \begin{tabular}{cccccc}
+    \hline
+    \multirow{2}{*}{$\rho$} 
+    & \multicolumn{2}{c}{AR(1)} 
+    & \multicolumn{2}{c}{MA(1)} \\ \cmidrule(r){2-3}\cmidrule(r){4-5}
+        & $\theta_{0}$ & $\beta_{0}$ & $\theta_{0}$ & $\beta_{0}$   \\ \hline
+    0.6 & 0.0037 & 2.1503 & 0.0071 & 2.1247 \\
+    0.1 & 0.0034 & 1.8573 & 0.0034 & 1.7147 \\
+    0.0 & 0.0031 & 1.8490 & 0.0030 & 1.6400 \\
+    0.1 & 0.0033 & 2.0329 & 0.0035 & 2.1271 \\ \hline
+  \end{tabular}
+\end{table}
 %\begin{table} \end{table}环境也可，但图标位置会浮动.
 
-\Subsection{2.2\ \ 图示例}
-\begin{center}
-\centerline
-  {\includegraphics[scale=0.35]{1.eps}}
-\centering{\small 图1\ \ 标题}\\
- \centerline{\small (Figure 1\ \ Title)}%%图中文标题下附英文标题翻译。}
-\end{center}
+\subsection{图示例}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.42]{1.eps}
+  \caption{标题}
+  \centerline{\small (Figure 1\ \ Title)}%%图中文标题下附英文标题翻译。}
+\end{figure}
 其中[scale=0.42]的参数可以调节大小.
 %\begin{figure} \end{figure}环境也可，但图位置会浮动.
 
@@ -196,7 +176,7 @@ $A=A_1+A_2+\cdots+A_m$,  $\cdots$.
 Roman Regular字体,图中变量符号为Times New Roman
  Italic字体(可使用Adobe Illustrator软件实现),图中所使用的数学符号要与文中格式保持一致.
 
- \Subsection{2.3\ \ 公式示例}
+\subsection{公式示例}
 
 %----------------------------------
 %--文中公式需注意：
@@ -206,56 +186,54 @@ Roman Regular字体,图中变量符号为Times New Roman
 %--公式后应有标点符号.
 %----------------------------------
 
-\ay
-\begin{eqnarray}\label{E:2.1}
-AAAAAAAAAA &=& BBBBBBBBBBB\nonumber \\
-           && + CCCCCCCCCC\nonumber \\
-           &=& DDDDDDDDDDDDD.
-\end{eqnarray}
+\begin{align}\label{E:2.1}
+    AAAAAAAAAA &= BBBBBBBBBBB      \notag \\
+               &\quad + CCCCCCCCCC \notag \\
+               &= DDDDDDDDDDDDD.
+\end{align}
 %公式太长时，换行注意相应符号对齐格式.
 
-\ay
-\begin{eqnarray}\label{E:2.2}
-&&AAAAAA =(A+B)-\big(B^{-2^A}+1\big)D-C,\nonumber \\
-&&BBBBBBBBB=AA-BB+\bigg\{\frac{A}{B}+
-\dfrac{B^2-C+\frac{A}{D}}{CC+AD}\bigg\}-CCCC\nonumber \\
-&&\hspace{3cm}+DDDDD,\nonumber \\
-&&DDDDDDDD={\it \Omega}A+{\it \Phi}_{2}.
-\end{eqnarray}
-%多行公式时注意左对齐格式;注意实用合适大小的括号.
-\ay\begin{align}\label{E:2.3} &A_{1}=B^{\rm T},\q A_{2}=C, \q
-A_{3}=D,\\% 注意多个公式之间要用\quad隔开. 矩阵向量的转置符号T要正体.
-& AA=\left\{
-                   \begin{array}{ll}
-                     BBB, \q & C=DD, \\
-                     0, \q  & \mbox{其他}.
-                   \end{array}
-                 \right.
- \end{align}
+\begin{align}\label{E:2.2}
+  AAAAAA &= (A+B) - \big(B^{-2^A}+1\big)D - C, \\
+  BBBB   &= \bigg\{\frac{A}{B} + \dfrac{B^2-C+\frac{A}{D}}{CC+AD}\bigg\} 
+            - CCCC \notag\\ 
+         &\quad + DDDDD, \\
+  DD     &= \varOmega A + \varPhi_{2}.
+\end{align}
+
+%多行公式时注意左对齐格式;注意使用合适大小的括号.
+\begin{align}\label{E:2.3}
+  & A_{1}=B^{\rm T},\quad A_{2}=C, \quad A_{3}=D,\\
+  % 注意多个公式之间要用\quad隔开. 矩阵向量的转置符号T要正体.
+  & AA = \begin{cases}
+         BBB, & C=DD, \\
+         0,   & \text{其他}.
+       \end{cases}
+\end{align}
 % 注意各列要左对齐.
 
 %以下为公式排版式例.
-\ay
-\begin{eqnarray}
-\|\tilde{u}^{y}(\cdot,t)\|_{L^{1}}&\leq&
-\ee^{\bar{\beta}t}\|u_{0}\|_{L^{1}}
-+\d\int_{0}^{t}\ee^{\bar{\beta}(t-s)}\bigg\|
-\dfrac{f(\cdot,s)}{y(s)}\bigg\|_{L^{1}}\dd s \nonumber\\
-&\leq& \ee^{\bar{\beta}t}\|u_{0}\|_{L^{1}}
-+\d\int_{0}^{t}\ee^{\bar{\beta}(t-s)}\dfrac{\|f(\cdot,s)
-\|_{L^{1}}}{y(s)}\dd s \nonumber\\
-&\leq&
-\ee^{\bar{\beta}T}\bigg(\|u_{0}\|_{L^{1}}+\dfrac{\|f\|_{L^{1}(Q)}}
-{\delta}\bigg)\doteq
-r_{0}.
-\end{eqnarray}
+\begin{equation}
+  \begin{split}
+    \|\tilde{u}^{y}(\cdot,t)\|_{L^{1}}
+    &\leq \ee^{\bar{\beta}t}\|u_{0}\|_{L^{1}}
+    +\int_{0}^{t}\ee^{\bar{\beta}(t-s)}\bigg\|
+    \dfrac{f(\cdot,s)}{y(s)}\bigg\|_{L^{1}}\dd s \\
+    &\leq \ee^{\bar{\beta}t}\|u_{0}\|_{L^{1}}
+    +\int_{0}^{t}\ee^{\bar{\beta}(t-s)}\dfrac{\|f(\cdot,s)
+    \|_{L^{1}}}{y(s)}\dd s \\
+    &\leq \ee^{\bar{\beta}T}\bigg(\|u_{0}\|_{L^{1}}+\dfrac{\|f\|_{L^{1}(Q)}}
+    {\delta}\bigg)\doteq r_{0}.
+  \end{split}
+\end{equation}
+
 %另外注意在\begin\{array\}\end\{array\}数组环境下的
 %公式中,\sum,\int, \prod, \frac,\cdots前都要添加displaystyle命令.
 
 
 \vskip 1cm {
 %%特别提醒:参考文献中若为中文文献，请后附英文翻译。
-\BeginRef %%{作者名, 文题, 刊, 书名, 年, 卷(期): 起止页码.}
+\begin{reference} %%{作者名, 文题, 刊, 书名, 年, 卷(期): 起止页码.}
 
 \bibitem{ref1}列举几类参考文献的排版格式 (Layout the formats of several
 references).
@@ -300,10 +278,14 @@ Master Thesis. Jilin University, Jilin, 2010.)%注:学位论文排版格式
 
 \bibitem{ref9}Text.
 \bibitem{ref10}Text.
-\EndRef
+\end{reference}
 
-} 附录
+}附录
 %请将附录部分放于此处编排。
 
+\normalfont\bfseries eng 中国那我呢\par
+\normalfont\rmfamily eng 中国那我呢\par
+\normalfont\itshape eng 中国那我呢\par
+\normalfont\sffamily eng 中国那我呢\par
 
 \end{document}
