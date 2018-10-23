@@ -1,28 +1,27 @@
 % !TeX encoding = GBK
+
 %%
-%% This is file `jssms.cls',
-%% generated with the docstrip utility.
+%
+% jssms.cls
+% Copyright (C) 2019 by muzimuzhi <muzimuzhi@gmail.com>
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is muzimuzhi.
+%
+% This work consists of the file jssme.cls.
+%
 %%
-%% ----------------------------------------------------------------------
-%% 
-%% It may be distributed and/or modified under the
-%% conditions of the LaTeX Project Public License, either version 1.2
-%% of this license or (at your option) any later version.
-%% The latest version of this license is in
-%%    http://www.latex-project.org/lppl.txt
-%% and version 1.2 or later is part of all distributions of LaTeX
-%% version 1999/12/01 or later.
-%% 
-%% This file may only be distributed together with a copy of original
-%% source files. You may however distribute original source files
-%% without such generated files. Copying of this file is authorized
-%% only if either:
-%% (1) you make absolutely no changes to your copy, including name; OR
-%% (2) if you do make changes, you first rename it to some other name.
-%% 
-%% To produce the documentation run the original source files ending
-%% with `.dtx' through LaTeX.
-%% 
+
+%%
 %% \CharacterTable
 %%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -38,11 +37,10 @@
 %%   Right bracket \]     Circumflex    \^     Underscore    \_
 %%   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %%   Right brace   \}     Tilde         \~}
-%%
+
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{jssms}
-  [2011/06/30 v0.1b Journal of System Science and Mathematical Science Chinese Series
-   article document class]
+  [2018/10/23 v0.2 Template for Journal of System Science and Mathematical Science (JSSMS), Chinese Series]
 \newif\ifjssms@evenend \jssms@evenendfalse
 \DeclareOption{evenend}{\jssms@evenendtrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{cctart}}
