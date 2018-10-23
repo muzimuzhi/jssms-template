@@ -286,6 +286,11 @@ scaled \magstep0 \font\tenbf=cmb10 scaled \magstep0
 \newcommand\EndRef{\end{thebibliography}}
 \newcommand*\REF[1]{\bibitem{#1}}
 \newcommand*\supercite[1]{\textsuperscript{\cite{#1}}}
+
+%%
+%% config path of figures
+%%
+\graphicspath{{./figures/}}
 \endinput
 %%
 %% End of file `jssmsc.cls'.
